@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product page</title>
+    <link href="/css/table.css" th:href="@{/css/table.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Product name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Producer name</th>
+            <th scope="col">Submit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <form action="#" th:action="@{/product}" th:object="${newProduct}" method="post">
+                <th scope="row"><input type="text" th:field="*{name}"></th>
+                <td><input type="number" min="0" th:field="*{price}"/></td>
+                <td><select th:field="*{producer.id}">
+                    <option th:each="prdcr : ${producerList}" th:value="${prdcr.id}" th:text="${prdcr.name}"/>
+                </select></td>
+                <td>
+                    <button type="submit" class="btn btn-success">Add</button>
+                </td>
+
+            </form>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Product name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Producer name</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pr: ${productList}">
+            <th scope="row"><span th:text="${pr.id}"/></th>
+            <td><span th:text="${pr.name}"></span></td>
+            <td><span th:text="${pr.price}"></span></td>
+            <td><span th:text="${pr.producer.name}"></span></td>
+
+            <td>
+                <form action="#" th:action="@{/product/} + ${pr.id}" th:method="DELETE" method="DELETE">
+                    <button th:type="submit" class="btn btn-warning">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Product name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Producer name</th>
+            <th scope="col">Submit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <form action="#" th:action="@{/product}" th:object="${newProduct}" th:method="PUT" method="post">
+                <th scope="row"><input type="text" th:field="*{name}"></th>
+                <td><input type="number" min="0" th:field="*{price}"/></td>
+                <td><select th:field="*{producer.id}">
+                    <option th:each="prdcr : ${producerList}" th:value="${prdcr.id}" th:text="${prdcr.name}"/>
+                </select></td>
+                <td>
+                    <button type="submit" class="btn btn-info">Add</button>
+                </td>
+
+            </form>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/users}">Users page</a><br>
+    <a th:href="@{/producer}">Producers page</a><br>
+    <a th:if="!authenticated" th:href="@{/login}">Login page</a>
+    <a th:href="@{/logout}">Logout</a>
+</div>
+</body>
+</html>

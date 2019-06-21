@@ -17,29 +17,33 @@ public class ProducerController {
 
     @GetMapping
     public ModelAndView showAll(WebRequest request) {
-        return new ModelAndView("producers", "producers", service.findAll());
+        ModelAndView modelAndView = new ModelAndView("producers", "newProducer", new ProducerDto());
+        modelAndView.addObject("producersList", service.findAll());
+        return modelAndView;
     }
 
     @PostMapping
-    public ModelAndView create(@RequestBody ProducerDto producerDto) {
+    public ModelAndView create(@ModelAttribute("newProducer") ProducerDto producerDto) {
         service.create(producerDto);
-        return new ModelAndView("producers", "producers", service.findAll());
+        return new ModelAndView("producers", "producersList", service.findAll());
     }
 
     @PutMapping
-    public ModelAndView update(@RequestBody ProducerDto producerDto) {
+    public ModelAndView update(@ModelAttribute("newProducer") ProducerDto producerDto) {
         try {
             service.update(producerDto);
         } catch (NotFoundProducerException e) {
             return new ModelAndView("error", "message", "producer not found");
         }
-        return new ModelAndView("producers", "producers", service.findAll());
+        return new ModelAndView("producers", "producersList", service.findAll());
     }
 
 
     @DeleteMapping("/{id}")
     public ModelAndView deleteUser(@PathVariable String id) {
         service.deleteById(Long.valueOf(id));
-        return new ModelAndView("producers", "producers", service.findAll());
+        ModelAndView modelAndView = new ModelAndView("producers", "newProducer", new ProducerDto());
+        modelAndView.addObject("producersList", service.findAll());
+        return modelAndView;
     }
 }

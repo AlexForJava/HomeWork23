@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form action="#" th:action="@{/registration}" th:object="${user}" method="post">
+    <div>
+        <label>First name<br><input type="text" th:field="*{firstName}"></label>
+    </div>
+    <div>
+        <label>Last name<br>
+            <input type="text" th:field="*{lastName}"/>
+        </label>
+    </div>
+    <div>
+        <label>Email<br>
+            <input type="text" th:field="*{email}"/>
+            <p th:each="error :${#fields.errors('email')}" th:text="${error}">Validation error</p>
+        </label>
+    </div>
+    <div>
+        <label>Password<br>
+            <input type="password" th:field="*{password}"/>
+            <p th:each="error: ${#fields.errors('password')}" th:text="${error}">Validation error</p>
+        </label>
+    </div>
+    <div>
+        <label>Confirm password<br>
+            <input type="password" th:field="*{matchingPassword}"/>
+        </label>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+<a th:if="!authenticated" th:href="@{/login}">Login</a>
+<a th:href="@{/logout}">Logout</a>
+</body>
+</html>

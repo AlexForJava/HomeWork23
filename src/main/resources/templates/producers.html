@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/table.css" th:href="@{/css/table.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Producers page</title>
+</head>
+<body>
+
+<div class="container">
+    <form action="#" th:action="@{/producer}" th:object="${newProducer}" method="post">
+        <div>
+            <label>Producer name<br><input type="text" th:field="*{name}"></label>
+        </div>
+        <button type="submit">Add</button>
+    </form>
+</div>
+<br>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Producer name</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pr: ${producersList}">
+            <th scope="row"><span th:text="${pr.id}"/></th>
+            <td><span th:text="${pr.name}"/></td>
+            <td>
+                <form action="#" th:action="@{/producer/} + ${pr.id}" th:method="DELETE" method="DELETE">
+                    <button th:type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form action="#" th:action="@{/producer}" th:object="${newProducer}" th:method="PUT" method="PUT">
+        <div><label>Producer id<br>
+            <select th:field="*{id}">
+                <option th:each="prdcr : ${producersList}" th:value="${prdcr.id}" th:text="${prdcr.id}"/>
+            </select>
+        </label>
+        </div>
+        <div>
+            <label>Producer name<br><input type="text" th:field="*{name}"></label>
+        </div>
+        <button type="submit">Update</button>
+    </form>
+    <br>
+
+    <a th:href="@{/users}"  class="btn btn-secondary">Users page</a>
+    <a th:href="@{/product}" class="btn btn-info" >Products page</a>
+    <a th:if="authenticated" th:href="@{/logout}">Logout</a>
+</div>
+</body>
+</html>

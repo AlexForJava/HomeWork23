@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link href="/css/table.css" th:href="@{/css/table.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">First name</th>
+            <th scope="col">First name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col" sec:authorize="hasRole('ADMIN')">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user: ${userList}">
+            <th scope="row"><span th:text="${user.id}"/></th>
+            <td><span th:text="${user.firstName}"></span></td>
+            <td><span th:text="${user.lastName}"></span></td>
+            <td><span th:text="${user.email}"></span></td>
+            <td><span th:text="${user.roles}"></span></td>
+            <td sec:authorize="hasRole('ADMIN')">
+                <form action="#" th:action="@{/users/} + ${user.id}" th:method="DELETE" method="DELETE">
+                    <button class="btn btn-warning" th:type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <a th:href="@{/product}" class="btn btn-info" >Products page</a>
+    <a th:href="@{/producer}"class="btn btn-success" >Producers page</a><br>
+    <a th:href="@{/logout}">Logout</a>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@ package com.gmail.chernii.oleksii.service.product;
 import com.gmail.chernii.oleksii.dto.ProductDto;
 import com.gmail.chernii.oleksii.enities.ProductEntity;
 import com.gmail.chernii.oleksii.exceptions.NotFoundProductException;
-import com.gmail.chernii.oleksii.mappers.ProductMapper;
+import com.gmail.chernii.oleksii.mappers.product.ProductMapper;
 import com.gmail.chernii.oleksii.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

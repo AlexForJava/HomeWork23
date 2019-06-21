@@ -18,6 +18,6 @@ public class ProducerEntity extends BaseEntity{
     @Column(name = "producer_name")
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "producer")
     private Set<ProductEntity> productEntities;
 }
