@@ -23,6 +23,6 @@ public class ProductEntity extends BaseEntity {
     private BigDecimal price;
 
     @ManyToOne
-    @JoinColumn(name = "producer_id", nullable = false)
+    @JoinColumn(name = "producer_id")
     private ProducerEntity producer;
 }
