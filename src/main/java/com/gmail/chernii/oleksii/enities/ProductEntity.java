@@ -24,7 +24,7 @@ public class ProductEntity extends BaseEntity {
     @Column(name = "product_price")
     private BigDecimal price;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "producer_id", nullable = false)
-    private ProducerEntity producer;
+    private ProducerEntity producer;*/
 }
