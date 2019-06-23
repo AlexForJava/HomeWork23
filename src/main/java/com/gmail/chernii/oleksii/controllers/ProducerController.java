@@ -16,9 +16,19 @@ import org.springframework.web.servlet.ModelAndView;
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class ProducerController {
     private final ProducerService service;
+    private final ProducerRepository producerRepository;
+    private final ProductRepository productRepository;
 
     @GetMapping
     public ModelAndView showAll(WebRequest request) {
+        ModelAndView modelAndView = new ModelAndView("producers", "newProducer", new ProducerDto());
+        modelAndView.addObject("producersList", service.findAll());
+        return modelAndView;
+    }
+
+    @GetMapping("/clear")
+    public ModelAndView clear(){
+        productRepository.deleteAll();
         ModelAndView modelAndView = new ModelAndView("producers", "newProducer", new ProducerDto());
         modelAndView.addObject("producersList", service.findAll());
         return modelAndView;

@@ -25,8 +25,8 @@ public class ProducerServiceImpl implements ProducerService {
 
     @Override
     public void update(ProducerDto producerDto) throws NotFoundProducerException {
-        //ProducerEntity producerEntity = repository.findById(producerDto.getId()).orElseThrow(NotFoundProducerException::new);
-        repository.save(mapper.update(new ProducerEntity(), producerDto));
+        ProducerEntity producerEntity = repository.findById(producerDto.getId()).orElseThrow(NotFoundProducerException::new);
+        repository.save(mapper.update(producerEntity, producerDto));
     }
 
     @Override

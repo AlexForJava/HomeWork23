@@ -3,10 +3,8 @@ package com.gmail.chernii.oleksii.enities;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -24,7 +22,7 @@ public class ProductEntity extends BaseEntity {
     @Column(name = "product_price")
     private BigDecimal price;
 
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "producer_id", nullable = false)
-    private ProducerEntity producer;*/
+    private ProducerEntity producer;
 }

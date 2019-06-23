@@ -16,8 +16,8 @@ public class ProductMapperImpl implements ProductMapper{
     public ProductEntity create(ProductDto productDto) {
         ProductEntity entity = new ProductEntity()
                 .setName(productDto.getName())
-                .setPrice(BigDecimal.valueOf(productDto.getPrice()));
-                //.setProducer(producerDtotoEntity(productDto.getProducer()));
+                .setPrice(BigDecimal.valueOf(productDto.getPrice()))
+                .setProducer(producerDtotoEntity(productDto.getProducer()));
         entity.setUuid(UUID.randomUUID());
         return entity;
     }
@@ -25,8 +25,8 @@ public class ProductMapperImpl implements ProductMapper{
     @Override
     public ProductEntity update(ProductEntity entity, ProductDto productDto) {
         return entity.setName(productDto.getName())
-                .setPrice(BigDecimal.valueOf(productDto.getPrice()));
-                //.setProducer(producerDtotoEntity(productDto.getProducer()));
+                .setPrice(BigDecimal.valueOf(productDto.getPrice()))
+                .setProducer(producerDtotoEntity(productDto.getProducer()));
     }
 
     @Override
@@ -34,8 +34,8 @@ public class ProductMapperImpl implements ProductMapper{
         return new ProductDto()
                 .setId(entity.getId())
                 .setPrice(entity.getPrice().intValue())
-                .setName(entity.getName());
-                //.setProducer(producerEntityToDto(entity.getProducer()));
+                .setName(entity.getName())
+                .setProducer(producerEntityToDto(entity.getProducer()));
     }
 
 

@@ -44,10 +44,9 @@
 
     <form action="#" th:action="@{/producer}" th:object="${newProducer}" th:method="PUT" method="PUT">
         <div><label>Producer id<br>
-            <!--<select th:field="*{id}" class="form-control">
+            <select th:field="*{id}" class="form-control">
                 <option th:each="prdcr : ${producersList}" th:value="${prdcr.id}" th:text="${prdcr.id}"/>
-            </select>-->
-            <input type="number" th:field="*{id}"/>
+            </select>
         </label>
         </div>
         <div>

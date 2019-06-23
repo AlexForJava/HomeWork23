@@ -31,7 +31,6 @@ public class ProducerMapperImpl implements ProducerMapper {
 
     @Override
     public ProducerEntity update(ProducerEntity entity, ProducerDto producerDto) {
-        entity.setId(producerDto.getId());
         return entity.setName(producerDto.getName());
     }
 
