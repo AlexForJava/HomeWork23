@@ -3,6 +3,7 @@ package com.gmail.chernii.oleksii.enities;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -18,6 +19,6 @@ public class ProducerEntity extends BaseEntity{
     @Column(name = "producer_name")
     private String name;
 
-    @OneToMany(mappedBy = "producer")
+    @OneToMany(mappedBy = "producer", cascade = CascadeType.ALL)
     private Set<ProductEntity> productEntities;
 }
