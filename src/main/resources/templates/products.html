@@ -54,7 +54,7 @@
             <th scope="row"><span th:text="${pr.id}"/></th>
             <td><span th:text="${pr.name}"></span></td>
             <td><span th:text="${pr.price}"></span></td>
-            <!--<td><span th:text="${pr.producer.name}"></span></td>-->
+            <td><span th:text="${pr.producer.name}"></span></td>
 
             <td>
                 <form action="#" th:action="@{/product/} + ${pr.id}" th:method="DELETE" method="DELETE">

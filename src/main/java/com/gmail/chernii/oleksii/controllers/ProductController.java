@@ -25,16 +25,6 @@ public class ProductController {
         return modelAndView;
     }
 
-    @GetMapping("/{id}")
-    public ModelAndView delete(@PathVariable String id){
-        productService.deleteById(Long.valueOf(id));
-        ModelAndView modelAndView = new ModelAndView("products", "newProduct", new ProductDto());
-        modelAndView.addObject("producerList", producerService.findAll());
-        modelAndView.addObject("productList", productService.findAll());
-        return modelAndView;
-    }
-
-
     @PostMapping
     public ModelAndView create(@ModelAttribute("newProduct") ProductDto productDto) {
         productService.create(productDto);
