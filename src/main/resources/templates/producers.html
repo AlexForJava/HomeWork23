@@ -44,7 +44,7 @@
 
     <form action="#" th:action="@{/producer}" th:object="${newProducer}" th:method="PUT" method="PUT">
         <div><label>Producer id<br>
-            <select th:field="*{id}">
+            <select th:field="*{id}" class="form-control">
                 <option th:each="prdcr : ${producersList}" th:value="${prdcr.id}" th:text="${prdcr.id}"/>
             </select>
         </label>
@@ -55,10 +55,15 @@
         <button type="submit">Update</button>
     </form>
     <br>
+</div>
 
-    <a th:href="@{/users}"  class="btn btn-secondary">Users page</a>
-    <a th:href="@{/product}" class="btn btn-info" >Products page</a>
-    <a th:if="authenticated" th:href="@{/logout}">Logout</a>
+<div class="container">
+    <a th:href="@{/registration}" class="btn btn-primary btn-lg">Registration page</a>
+    <a th:href="@{/users}" class="btn btn-primary btn-lg">Users page</a>
+    <a th:href="@{/product}" class="btn btn-primary btn-lg">Products page</a>
+    <a th:href="@{/producer}" class="btn btn-primary btn-lg">Producers page</a>
+    <a th:href="@{/login}" class="btn btn-warning btn-lg">Login page</a>
+    <a th:href="@{/logout}" class="btn btn-danger btn-lg">Logout</a>
 </div>
 </body>
 </html>

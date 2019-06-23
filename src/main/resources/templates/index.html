@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Start page</title>
@@ -13,12 +12,14 @@
 <body>
 <div class="container">
     <h1>Welcome</h1>
-    <a th:href="@{/registration}" class="btn btn-primary">Registration page</a>
-    <a th:href="@{/users}"  class="btn btn-secondary">Users page</a>
-    <a th:href="@{/product}" class="btn btn-info" >Products page</a>
-    <a th:href="@{/producer}"class="btn btn-success" >Producers page</a><br>
-    <a th:if="!authenticated" th:href="@{/login}">Login page</a><br>
-    <a th:if="authenticated" th:href="@{/logout}">Logout</a>
+</div>
+<div class="container">
+    <a th:href="@{/registration}" class="btn btn-primary btn-lg">Registration page</a>
+    <a th:href="@{/users}" class="btn btn-primary btn-lg">Users page</a>
+    <a th:href="@{/product}" class="btn btn-primary btn-lg">Products page</a>
+    <a th:href="@{/producer}" class="btn btn-primary btn-lg">Producers page</a>
+    <a th:href="@{/login}" class="btn btn-warning btn-lg">Login page</a>
+    <a th:href="@{/logout}" class="btn btn-danger btn-lg">Logout</a>
 </div>
 </body>
 </html>

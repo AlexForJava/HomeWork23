@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Successful registration</title>
+    <link href="/css/table.css" th:href="@{/css/table.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h3>Registration is successful</h3>
-<a th:href="@{/login}">Login</a>
+<div class="container">
+    <h3>Registration is successful</h3>
+</div>
+<div class="container">
+    <a th:href="@{/registration}" class="btn btn-primary btn-lg">Registration page</a>
+    <a th:href="@{/users}" class="btn btn-primary btn-lg">Users page</a>
+    <a th:href="@{/product}" class="btn btn-primary btn-lg">Products page</a>
+    <a th:href="@{/producer}" class="btn btn-primary btn-lg">Producers page</a>
+    <a th:href="@{/login}" class="btn btn-warning btn-lg">Login page</a>
+    <a th:href="@{/logout}" class="btn btn-danger btn-lg">Logout</a>
+</div>
 </body>
 </html>

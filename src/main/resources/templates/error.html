@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Error page</title>
+    <link href="/css/table.css" th:href="@{/css/table.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1><span th:text="${message}"/>
-</h1>
+<div class="container">
+    <h1><span th:text="${message}"/>
+    </h1>
+</div>
+<br>
+<div class="container">
+    <a th:href="@{/registration}" class="btn btn-primary">Registration page</a>
+    <a th:href="@{/users}" class="btn btn-primary">Users page</a>
+    <a th:href="@{/product}" class="btn btn-primary">Products page</a>
+    <a th:href="@{/producer}" class="btn btn-primary">Producers page</a>
+    <a th:href="@{/login}" class="btn btn-warning">Login page</a>
+    <a th:href="@{/logout}" class="btn btn-danger">Logout</a>
+</div>
 </body>
 </html>
